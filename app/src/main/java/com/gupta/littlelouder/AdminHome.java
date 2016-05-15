@@ -85,7 +85,7 @@ public class AdminHome extends AppCompatActivity {
         admin_home_like_count = (TextView) findViewById(R.id.admin_home_like_count);
         admin_home_comment_count = (TextView) findViewById(R.id.admin_home_comment_count);
 
-        // Receive the user detail bundle from the login Page or Cover Page
+        // Receive the user detail bundle from the login Page or Cover Page.
         Intent receive = getIntent();
         userBundle = receive.getExtras();
 
