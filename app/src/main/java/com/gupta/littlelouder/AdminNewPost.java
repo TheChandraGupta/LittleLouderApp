@@ -70,14 +70,20 @@ public class AdminNewPost extends AppCompatActivity {
         admin_new_post_add = (EditText) findViewById(R.id.admin_new_post_add);
         admin_new_post_button = (Button) findViewById(R.id.admin_new_post_button);
 
+        Log.d(TAG,"Line-73");
+
         // Reeive the user detail bundle from the login Page or Cover Page
         Intent receive = getIntent();
         userBundle = receive.getExtras();
+
+        Log.d(TAG,"Line-79");
 
         // Initialize the Dialogue BOX
         dialog = new ProgressDialog(AdminNewPost.this);
         dialog.setMessage("Loading...");
         dialog.setCancelable(false);
+
+        Log.d(TAG,"Line-86");
 
         // Fetch the user details from the userBundle
         user.setUserId(userBundle.getInt("userId"));
@@ -87,14 +93,22 @@ public class AdminNewPost extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Show the message on Load
-                //dialog.show();
+                dialog.show();
+                try {
+                    Log.d(TAG, "Line-98");
 
-                post = admin_new_post_add.getText().toString();
+                    post = admin_new_post_add.getText().toString();
 
-                URL = URL1 + "?userid="+user.getUserId()+"&status="+post;
+                    Log.d(TAG, "Line-102");
 
-                new AdminNewPostDown().execute(URL);
+                    URL = URL1 + "?userid=" + user.getUserId() + "&status=" + post;
 
+                    Log.d(TAG, "Line-106 URL=" + URL);
+
+                    new AdminNewPostDown().execute(URL);
+
+                    Log.d(TAG, "Line-110 ************");
+                } catch (Exception e) { e.printStackTrace(); }
             }
         });
 
@@ -154,8 +168,13 @@ public class AdminNewPost extends AppCompatActivity {
 
         try {
 
+            Log.d(TAG,"Line-171");
+
             // Iy is used to get the response from the server
             HttpResponse response = client.execute(post);
+
+            Log.d(TAG,"Line-176");
+
             // Get the statusCode. For successful executeion the statusCode is 200 and other are 400, 404, 500 and etc
             final int statusCode = response.getStatusLine().getStatusCode();
 
@@ -202,7 +221,10 @@ public class AdminNewPost extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             // display the progress dialogue
-            dialog.show();
+            //dialog.show();
+
+            Log.d(TAG,"Line-226");
+
             // execute the server login validation and return to the on PostExecution
             return adminNewPostWS(URL); //***************************************************************************
 
@@ -213,6 +235,8 @@ public class AdminNewPost extends AppCompatActivity {
         protected void onPostExecute(String result) {
             try {
 
+                Log.d(TAG,"Line-238");
+
                 JSONArray array = new JSONArray(result);
 
                 for (int i = 0; i < array.length(); i++) {
@@ -221,17 +245,24 @@ public class AdminNewPost extends AppCompatActivity {
 
                     status = object.getBoolean("status");
 
+                    Log.d(TAG,"Line-248");
+
                     if (status) {
+
+                        dialog.hide();
 
                         Toast.makeText(AdminNewPost.this, "You Are Louder", Toast.LENGTH_SHORT).show();
 
-                        dialog.hide();
+                        Log.d(TAG,"Line-256");
 
                         // Create intent for movinf to new Activity
                         Intent loginIntent = new Intent(getApplicationContext(), AdminHome.class);
                         // Add Bundle to intent
                         loginIntent.putExtras(userBundle);
                         // Start the next Activity
+
+                        Log.d(TAG,"Line-264");
+
                         startActivity(loginIntent);
                         // Finish the current Activity
                         //finish();
@@ -240,6 +271,8 @@ public class AdminNewPost extends AppCompatActivity {
                     else {
 
                         dialog.hide();
+
+                        Log.d(TAG,"Line-275");
 
                         Toast.makeText(AdminNewPost.this, "Unable to UpLoad Data", Toast.LENGTH_SHORT).show();
                         return;
