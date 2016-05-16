@@ -32,6 +32,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class Registration extends Activity {
 
@@ -105,7 +107,11 @@ public class Registration extends Activity {
                 userPhone = registration_phone.getText().toString();
                 userPassword = registration_password1.getText().toString();
 
-                URL = URL1 + "?name="+userName+"&email="+userEmail+"&phone="+userPhone+"&password="+userPassword;
+                try {
+                    URL = URL1 + "?name="+ URLEncoder.encode(userName, "utf-8")+"&email="+userEmail+"&phone="+userPhone+"&password="+userPassword;
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
 
                 new RegistrationDown().execute(URL);
 

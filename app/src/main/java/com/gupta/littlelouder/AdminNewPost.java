@@ -33,6 +33,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 
 public class AdminNewPost extends AppCompatActivity {
 
@@ -101,7 +102,7 @@ public class AdminNewPost extends AppCompatActivity {
 
                     Log.d(TAG, "Line-102");
 
-                    URL = URL1 + "?userid=" + user.getUserId() + "&status=" + post;
+                    URL = URL1 + "?userid=" + user.getUserId() + "&status=" + URLEncoder.encode(post, "utf-8");
 
                     Log.d(TAG, "Line-106 URL=" + URL);
 
@@ -219,17 +220,17 @@ public class AdminNewPost extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-
             // display the progress dialogue
             //dialog.show();
+            String res = "";
+            try {
+                Log.d(TAG, "Line-226");
 
-            Log.d(TAG,"Line-226");
-
+                res = adminNewPostWS(URL);
+            } catch (Exception e) { e.printStackTrace(); }
             // execute the server login validation and return to the on PostExecution
-            return adminNewPostWS(URL); //***************************************************************************
-
+            return res; //***************************************************************************
         }
-
         // This method will be executed after the fetching of data from the Web Services
         @Override
         protected void onPostExecute(String result) {
