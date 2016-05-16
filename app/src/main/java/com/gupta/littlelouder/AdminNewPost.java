@@ -87,7 +87,7 @@ public class AdminNewPost extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Show the message on Load
-                dialog.show();
+                //dialog.show();
 
                 post = admin_new_post_add.getText().toString();
 

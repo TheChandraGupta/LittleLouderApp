@@ -71,9 +71,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:text="New Text"
+                android:hint="New Text"
+                android:textColorHint="#fff"
                 android:id="@+id/admin_new_post_add"
                 android:layout_below="@+id/admin_new_post_head"
                 android:background="@color/colorLouderField"
