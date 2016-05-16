@@ -40,7 +40,7 @@ public class AdminChangePassword extends AppCompatActivity {
 
     ProgressDialog dialog;
 
-    boolean status = false;
+    //boolean status = false;
 
     String oldPass, newPass1, newPass2;
 
@@ -107,6 +107,8 @@ public class AdminChangePassword extends AppCompatActivity {
 
                 }
                 else {
+
+                    dialog.hide();
 
                     Toast.makeText(AdminChangePassword.this, "OLD PASSWORD DID NOT MATCHED", Toast.LENGTH_SHORT).show();
 
@@ -242,11 +244,12 @@ public class AdminChangePassword extends AppCompatActivity {
 
                     JSONObject object = array.getJSONObject(i);
 
-                    status = object.getBoolean("status");
+                    //String KEY = object.getString("KEY");
+                    String CODE = object.getString("CODE");
 
-                    if (status) {
+                    if (CODE.equals("true")) {
 
-                        user.setPassword(object.getString("password"));
+                        user.setPassword(newPass1);
 
                         Bundle sendBundle = new Bundle();
 
