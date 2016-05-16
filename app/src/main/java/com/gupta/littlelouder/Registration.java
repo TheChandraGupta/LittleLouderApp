@@ -106,7 +106,7 @@ public class Registration extends Activity {
                 userEmail = registration_email.getText().toString();
                 userPhone = registration_phone.getText().toString();
                 userPassword = registration_password1.getText().toString();
-                // URLEncoder used to replace the white space with %20
+                // URLEncoder used to replace the white space with %20 to use URL.
                 try {
                     URL = URL1 + "?name="+ URLEncoder.encode(userName, "utf-8")+"&email="+userEmail+"&phone="+userPhone+"&password="+userPassword;
                 } catch (UnsupportedEncodingException e) {
