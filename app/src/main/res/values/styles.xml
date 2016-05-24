@@ -54,4 +54,9 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="AppTheme.CommentPopUpTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
 </resources>

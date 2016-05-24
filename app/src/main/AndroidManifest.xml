@@ -83,7 +83,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdminHome"
+        <activity
+            android:name=".AdminHome"
             android:noHistory="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -92,7 +93,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdminChangePassword"
+        <activity
+            android:name=".AdminChangePassword"
             android:noHistory="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -101,7 +103,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdminNewPost"
+        <activity
+            android:name=".AdminNewPost"
             android:noHistory="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -110,6 +113,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CommentPopUp"
+            android:theme="@style/AppTheme.CommentPopUpTheme"></activity>
     </application>
 
 </manifest>
